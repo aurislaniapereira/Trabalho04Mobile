@@ -1,13 +1,20 @@
 package br.ufc.quixada.dadm.trabalho04mobile;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,12 +23,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.IOException;
+
 public class Cadastro extends AppCompatActivity {
 
-    EditText etNome;
-    EditText etLogin;
-    EditText etSenha;
-    Button btnCadastrar;
+    private EditText etNome;
+    private EditText etLogin;
+    private EditText etSenha;
+    private Button btnCadastrar;
+    private Button btnImagem;
+    private ImageView imgPhoto;
+    
+    private Uri mSelectedUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,15 @@ public class Cadastro extends AppCompatActivity {
         etLogin = findViewById(R.id.editTextLogin);
         etSenha = findViewById(R.id.editTextSenha);
         btnCadastrar = findViewById(R.id.buttonCadastrar);
+        btnImagem = findViewById(R.id.buttonImage);
+        imgPhoto = findViewById(R.id.imageFoto);
+
+        btnImagem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedPhoto();
+            }
+        });
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +61,32 @@ public class Cadastro extends AppCompatActivity {
                 createUser();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode , resultCode, data);
+
+        if(requestCode == 0){
+            mSelectedUri = data.getData();
+
+            Bitmap bitmap = null;
+            try{
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedUri);
+                imgPhoto.setImageDrawable(new BitmapDrawable(bitmap));
+                btnImagem.setAlpha(0);
+            } catch (IOException e){
+
+            }
+        }
+
+    }
+
+    //pega imagem da galeria
+    private void selectedPhoto(){
+        Intent i = new Intent (Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityForResult(i, 0);
     }
 
     private void createUser(){

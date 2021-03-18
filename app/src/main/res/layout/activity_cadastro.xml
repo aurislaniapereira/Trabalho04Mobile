@@ -26,10 +26,12 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Cadastre-se"
         android:background="@drawable/bg_button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSenha"
-        tools:layout_editor_absoluteX="31dp" />
+        android:text="Cadastre-se"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSenha"
+        app:layout_constraintStart_toStartOf="@+id/editTextSenha"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSenha" />
 
     <EditText
         android:id="@+id/editTextSenha"
@@ -58,16 +60,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonImage" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="150"
-        android:layout_height="150"
+        android:id="@+id/buttonImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="25dp"
-        android:text="Button"
+        android:text="Image"
+        android:textColor="@color/cardview_light_background"
+        android:background="@drawable/bg_button_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageFoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/cardview_light_background"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
