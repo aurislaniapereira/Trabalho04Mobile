@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "635009576254",
+    "project_id": "trabalho-04-mobile",
+    "storage_bucket": "trabalho-04-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635009576254:android:678805e949de1140fa906f",
+        "android_client_info": {
+          "package_name": "br.ufc.quixada.dadm.trabalho04mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635009576254-kuft23039v8q0eu8j5vs1b1d77mnvdsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn0xE3BU9PPVJXsKenKuXzm8NiC5j8keg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635009576254-kuft23039v8q0eu8j5vs1b1d77mnvdsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
