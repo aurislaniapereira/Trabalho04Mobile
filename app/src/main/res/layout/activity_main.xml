@@ -26,10 +26,10 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Entre"
         android:background="@drawable/bg_button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSenha"
-        tools:layout_editor_absoluteX="31dp" />
+        android:text="Entre"
+        app:layout_constraintStart_toStartOf="@+id/editTextSenha"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSenha" />
 
     <TextView
         android:id="@+id/textViewCadastro"

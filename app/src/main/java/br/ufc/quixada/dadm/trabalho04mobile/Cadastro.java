@@ -19,11 +19,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -90,11 +95,12 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private void createUser(){
+        String nome = etNome.getText().toString();
         String login = etLogin.getText().toString();
         String senha = etSenha.getText().toString();
 
-        if(login == null || login.isEmpty() || senha == null || senha.isEmpty()){
-            Toast.makeText(this, "A senha e email devem ser preenchidos!", Toast.LENGTH_SHORT).show();
+        if(nome == null || nome.isEmpty() ||login == null || login.isEmpty() || senha == null || senha.isEmpty()){
+            Toast.makeText(this, "Nome, senha e email devem ser preenchidos!", Toast.LENGTH_SHORT).show();
             return;
         }
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(login, senha)
@@ -103,6 +109,9 @@ public class Cadastro extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                             Log.i("Teste", task.getResult().getUser().getUid());
+
+                            saveUserInFirebase();
+
                     }
 
                 })
@@ -110,6 +119,29 @@ public class Cadastro extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.i("Teste", e.getMessage());
+                    }
+                });
+    }
+
+    private void saveUserInFirebase(){
+        String filename = UUID.randomUUID().toString();
+        final StorageReference ref = FirebaseStorage.getInstance().getReference("/images/" + filename);
+        ref.putFile(mSelectedUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Log.i("Teste", uri.toString());
+                            }
+                        });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("Teste", e.getMessage(), e);
                     }
                 });
     }
