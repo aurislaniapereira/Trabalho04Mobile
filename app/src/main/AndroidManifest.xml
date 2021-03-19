@@ -11,15 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trabalho04Mobile">
-        <activity android:label="@string/Contatos"
-            android:name=".ContatosActivity">
+        <activity android:name=".ChatActivity"
+            android:label="@string/Chat">
+
             //assim cria o botão de back mais rapido
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MensagensActivity">
-            </meta-data>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MensagensActivity"></meta-data>
 
         </activity>
-        <activity android:name=".MensagensActivity"
+        <activity
+            android:name=".ContatosActivity"
+            android:label="@string/Contatos">
+            //assim cria o botão de back mais rapido
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MensagensActivity"></meta-data>
+        </activity>
+        <activity
+            android:name=".MensagensActivity"
             android:label="@string/Mensagens">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CadastroActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

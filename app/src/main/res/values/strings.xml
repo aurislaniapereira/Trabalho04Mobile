@@ -4,4 +4,8 @@
     <string name="logout">logout</string>
     <string name="Contatos">Contatos</string>
     <string name="Mensagens">Mensagens</string>
+    <string name="Chat">Chat</string>
+    <string name="btnChat">btnChat</string>
+    <string name="Enviar">Enviar</string>
+    <string name="Digiteamensagem">Digite a mensagem</string>
 </resources>
