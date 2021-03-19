@@ -2,10 +2,13 @@ package br.ufc.quixada.dadm.trabalho04mobile;
 
 public class User {
 
-    private final String uuid;
-    private final String login;
-    private final String profileURL;
+    private String uuid;
+    private String login;
+    private String profileURL;
 
+    public User (){
+
+    }
 
     public User(String uuid, String login, String profileURL) {
         this.uuid = uuid;

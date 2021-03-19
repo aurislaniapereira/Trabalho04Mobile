@@ -32,7 +32,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 
-public class Cadastro extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
     private EditText etNome;
     private EditText etLogin;
@@ -149,6 +149,11 @@ public class Cadastro extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
                                             Log.i("Teste", documentReference.getId());
+                                            Intent i = new Intent(CadastroActivity.this, MensagensActivity.class);
+
+                                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                            startActivity(i);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
