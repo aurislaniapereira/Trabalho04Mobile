@@ -131,6 +131,19 @@ public class ChatActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Log.d("Teste", documentReference.getId());
+
+                            Contact contact = new Contact();
+                            contact.setUuid(toId);
+                            contact.setUsername(me.getLogin());
+                            contact.setPhotoUrl(me.getProfileURL());
+                            contact.setTimestamp(message.getTimestamp());
+                            contact.setLastname(message.getText());
+
+                            FirebaseFirestore.getInstance().collection("/last-messages")
+                                    .document(fromId)
+                                    .collection("contacts")
+                                    .document(toId)
+                                    .set(contact);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -147,6 +160,19 @@ public class ChatActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Log.d("Teste", documentReference.getId());
+
+                            Contact contact = new Contact();
+                            contact.setUuid(toId);
+                            contact.setUsername(me.getLogin());
+                            contact.setPhotoUrl(me.getProfileURL());
+                            contact.setTimestamp(message.getTimestamp());
+                            contact.setLastname(message.getText());
+
+                            FirebaseFirestore.getInstance().collection("/last-messages")
+                                    .document(toId)
+                                    .collection("contacts")
+                                    .document(fromId)
+                                    .set(contact);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -175,9 +201,10 @@ public class ChatActivity extends AppCompatActivity {
 
             txt.setText(message.getText());
             Picasso.get()
-                    .load(user.getProfileURL())
+                    .load(message.getFromId().equals(FirebaseAuth.getInstance().getUid())
+                        ? me.getProfileURL()
+                        : user.getProfileURL())
                     .into(img);
-
         }
 
         @Override

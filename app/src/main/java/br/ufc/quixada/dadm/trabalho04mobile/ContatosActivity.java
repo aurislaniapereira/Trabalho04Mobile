@@ -85,8 +85,8 @@ public class ContatosActivity extends AppCompatActivity {
 
         @Override
         public void bind(@NonNull ViewHolder viewHolder, int position) {
-            TextView textUsername = viewHolder.itemView.findViewById(R.id.textView2);
-            ImageView imgFoto = viewHolder.itemView.findViewById(R.id.imageView);
+            TextView textUsername = viewHolder.itemView.findViewById(R.id.textViewUsername);
+            ImageView imgFoto = viewHolder.itemView.findViewById(R.id.imageViewPhoto);
 
             textUsername.setText(user.getLogin());
 

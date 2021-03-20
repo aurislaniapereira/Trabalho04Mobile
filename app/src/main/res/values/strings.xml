@@ -8,4 +8,5 @@
     <string name="btnChat">btnChat</string>
     <string name="Enviar">Enviar</string>
     <string name="Digiteamensagem">Digite a mensagem</string>
+    <string name="Ultimas">Ultimas Mensagens</string>
 </resources>

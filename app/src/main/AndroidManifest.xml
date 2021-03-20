@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name=".MensagensActivity"
-            android:label="@string/Mensagens">
+            android:label="@string/Ultimas">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
