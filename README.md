@@ -5,4 +5,4 @@ Nessa atividade era necessário criar um chat entre usuários do aplicativo. O c
 
 2. Lista de grupos de um usuário. Mensagens enviadas para o grupo deve ser entregues para todos os usuários cadastrados nesse grupo.
 
-Vocês devem criar um aplicativo que implemente essa funcionalidade de chat. O servidor utilizado fica a critério de vocês.
+O servidor utilizado fica a critério de cada aluno
